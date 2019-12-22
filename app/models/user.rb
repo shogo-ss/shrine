@@ -5,5 +5,6 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false } #重複していないか検証、大文字小文字区別
+  mount_uploader :user_image, AvaterUploader
   has_secure_password
 end
