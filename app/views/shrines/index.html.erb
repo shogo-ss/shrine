@@ -1,0 +1,7 @@
+<h1>神社一覧</h1>
+
+<ul>
+  <% @shrine.each do |shrine| %>
+    <li><%= link_to shrine.name, shrine_path(shrine) %></li>
+  <% end %>
+</ul>

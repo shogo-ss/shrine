@@ -10,12 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_113254) do
+ActiveRecord::Schema.define(version: 2019_12_23_132911) do
 
   create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.string "area"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "comment"
+    t.bigint "evaluation"
+    t.bigint "user_id"
+    t.bigint "shrine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shrine_id"], name: "index_reviews_on_shrine_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "shrines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -37,5 +49,7 @@ ActiveRecord::Schema.define(version: 2019_12_22_113254) do
     t.string "user_image"
   end
 
+  add_foreign_key "reviews", "shrines"
+  add_foreign_key "reviews", "users"
   add_foreign_key "shrines", "prefectures"
 end

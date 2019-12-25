@@ -1,0 +1,11 @@
+<div class="text-center">
+  <h2><%= @shrine.name %></h2>
+    <h3>
+      <%= @shrine.prefecture.name %>
+      <%= @shrine.address %></h3>
+      <%= link_to "レビューする", review_shrine_path %>
+  <ul class="nav nav-tabs nav-justified mb-6">
+    <li class="nav-item"><a href="#" class="nav-link">行った</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">気になる</a></li>
+  </ul>
+</div>
