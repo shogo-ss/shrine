@@ -42,6 +42,18 @@ class UsersController < ApplicationController
     end
   end
   
+  def wents
+    @user = User.find(params[:id])
+    @wents = @user.wents.page(params[:page])
+    counts(@user)
+  end
+  
+  def concerns
+    @user = User.find(params[:id])
+    @concerns = @user.concerns.page(params[:page])
+    counts(@user)
+  end
+  
   private
 
   def user_params

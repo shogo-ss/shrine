@@ -1,8 +1,6 @@
-class CreateReviews < ActiveRecord::Migration[5.2]
+class CreateConcerns < ActiveRecord::Migration[5.2]
   def change
-    create_table :reviews do |t|
-      t.text :comment
-      t.bigint :evaluation
+    create_table :concerns do |t|
       t.references :user, foreign_key: true
       t.references :shrine, foreign_key: true
 

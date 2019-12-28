@@ -23,6 +23,7 @@ class ShrinesController < ApplicationController
   
   def show
     @shrine = Shrine.find(params[:id])
+    @review = @shrine.reviews
   end
   
   def edit
@@ -42,7 +43,11 @@ class ShrinesController < ApplicationController
   end
 
   def destroy
-    
+    #本当に管理userか入れる
+    @shrine = Shrine.find(params[:id])
+    @shrine.destroy
+    flash[:success] = '神社を削除しました。'
+    redirect_to shrines_url(fallback_location: root_path)
   end
   
   def review
@@ -53,9 +58,9 @@ class ShrinesController < ApplicationController
   end
   
   def review_edit
-    @review = shrine.review(params[:id])
     @user = current_user
     @shrine = Shrine.find(params[:id])
+    @review = current_user.reviews.find_by(:shrine_id [params[:id]])
     render "reviews/edit"
   end
   

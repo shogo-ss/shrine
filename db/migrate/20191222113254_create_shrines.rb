@@ -6,6 +6,8 @@ class CreateShrines < ActiveRecord::Migration[5.2]
       t.references :prefecture, foreign_key: true
 
       t.timestamps
+      
+      t.index :name, unique: true
     end
   end
 end
