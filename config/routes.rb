@@ -6,13 +6,12 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
-  resources :users, only: [:show, :create, :edit, :update] do
-  member do
-      get :wents
+  resources :users, only: [:create, :edit, :update] do
+    member do
+      get :wents, to: "users#reviews"
       get :concerns
     end
   end
-  
   resources :shrines do
     member do
       get :review
@@ -25,7 +24,6 @@ Rails.application.routes.draw do
   
   resources :reviews, only: [:create,:destroy,:update]
   #except: [:index, :show]
-  resources :wents, only: [:create,:destroy]
   resources :concerns, only: [:create,:destroy]
   
 end

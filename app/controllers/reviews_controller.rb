@@ -3,8 +3,9 @@ class ReviewsController < ApplicationController
   
   def create
     @review = Review.new(review_params)
-    
+    shrine = @review.shrine
     if @review.save
+      current_user.concern?(shrine) if current_user.unconcern(shrine)
     flash[:success] = 'レビューしました'
     redirect_to shrine_url(@review.shrine.id)
     
@@ -37,6 +38,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:evaluation, :comment, :user_id, :shrine_id)
+    params.require(:review).permit(:evaluation, :comment, :user_id, :shrine_id, pictures_attributes: [:image])
   end
 end

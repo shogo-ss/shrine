@@ -10,7 +10,7 @@
           <li class="nav-item"><%= link_to "神社検索", shrines_path, class:"nav-link" %></li>
           <li class="nav-item"><%= link_to "神社登録", new_shrine_path, class:"nav-link" %></li>
         <% if logged_in? %>
-          <li class="nav-item"><%= link_to "マイページ", user_path(current_user), class:"nav-link" %></li>
+          <li class="nav-item"><%= link_to "マイページ", wents_user_path(current_user), class:"nav-link" %></li>
           <li class="nav-item"><%= link_to "ログアウト", logout_path, method: :delete, class:"nav-link" %></li>
         <% else %>
           <li class="nav-item"><%= link_to "マイページ", login_path, class:"nav-link" %></li>

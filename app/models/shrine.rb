@@ -5,10 +5,9 @@ class Shrine < ApplicationRecord
   validates :address, presence: true, length: { maximum: 50 }
   
   has_many :reviews, dependent: :destroy
-  has_many :users, through: :reviews
-  has_many :wents, dependent: :destroy
-  has_many :users, through: :wents
+  has_many :reviews_user, through: :reviews
   has_many :concerns, dependent: :destroy
-  has_many :users, through: :concerns
+  has_many :concerns_user, through: :concerns
+  has_many :reviews_pictures, through: :reviews, source: :pictures
   
 end

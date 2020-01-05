@@ -1,0 +1,8 @@
+<% if current_user.review?(shrine) %>
+  <%= form_with(model: current_user.reviews.find_by(shrine_id: shrine.id), local: true, method: :delete) do |f| %>
+    <%= hidden_field_tag :shrine_id, shrine.id %>
+    <%= f.submit '行った◉', class: 'btn btn-warning', data: { confirm: 'レビューも削除されます。本当に削除してよろしいですか？' }%>
+  <% end %>
+<% else %>
+  <%= link_to "行った◉", review_shrine_path , class: 'btn btn-light'%>
+<% end %>

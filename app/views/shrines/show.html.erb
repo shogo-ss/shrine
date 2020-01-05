@@ -1,24 +1,31 @@
-<div class="text-center">
-  <h2><%= @shrine.name %></h2>
-    <h3>
-      <%= @shrine.prefecture.name %>
-      <%= @shrine.address %></h3>
-      <%= link_to "レビューする(後で消す)", review_shrine_path %>
-      <%= link_to "神社を削除する", @shrine, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
-      <%= render 'wents/went_button', shrine: @shrine %>
-      <%= render 'concerns/concern_button', shrine: @shrine %>
+<h3><%= @shrine.name %></h3>
+<h6>住所:
+  <%= @shrine.prefecture.name %>
+  <%= @shrine.address %>
+</h6>
+<%= link_to "神社を削除する", @shrine, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+
+<ul class="nav">
+  <li>
+    <h5>☆☆☆☆☆<%= @shrine.reviews.average(:evaluation) %></h5>
+  </li>
+  <li>
+    <%= render 'reviews/review_button', shrine: @shrine %>
+  </li>
+  <li>
+    <h5><%= @shrine.reviews.count %></h5>
+  </li>
+  <li>
+    <%= render 'concerns/concern_button', shrine: @shrine %>
+  </li>
+  <li>
+    <h5><%= @shrine.concerns.count %></h5>
+  </li>
+  <li>
+    <%= link_to "レビューを編集する", review_edit_shrine_path %>
+  </li>
+</ul>
     
-      
-  <ul class="nav nav-tabs nav-justified mb-6">
-    <li class="nav-item"><a href="#" class="nav-link">行った</a></li>
-    <li class="nav-item"><a href="#" class="nav-link">気になる</a></li>
-  </ul>
-  
-  <h2>レビュー</h2>
-  <%= link_to "レビューを編集する", review_edit_shrine_path %>
-  <% @review.each do |review| %>
-  <div>星:<%= review.evaluation %></div>
-  <div>コメント</div>
-  <%= review.comment %>
-  <% end %>
-</div>
+<h3>レビュー<%= @shrine.reviews.count %></h3>
+
+<%= render "reviews/index" %>

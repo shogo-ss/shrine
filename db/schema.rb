@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_25_200034) do
+ActiveRecord::Schema.define(version: 2019_12_30_065526) do
 
   create_table "concerns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 2019_12_25_200034) do
     t.index ["shrine_id"], name: "index_concerns_on_shrine_id"
     t.index ["user_id", "shrine_id"], name: "index_concerns_on_user_id_and_shrine_id", unique: true
     t.index ["user_id"], name: "index_concerns_on_user_id"
+  end
+
+  create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image"
+    t.bigint "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_pictures_on_review_id"
   end
 
   create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -62,21 +70,10 @@ ActiveRecord::Schema.define(version: 2019_12_25_200034) do
     t.string "user_image"
   end
 
-  create_table "wents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "shrine_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shrine_id"], name: "index_wents_on_shrine_id"
-    t.index ["user_id", "shrine_id"], name: "index_wents_on_user_id_and_shrine_id", unique: true
-    t.index ["user_id"], name: "index_wents_on_user_id"
-  end
-
   add_foreign_key "concerns", "shrines"
   add_foreign_key "concerns", "users"
+  add_foreign_key "pictures", "reviews"
   add_foreign_key "reviews", "shrines"
   add_foreign_key "reviews", "users"
   add_foreign_key "shrines", "prefectures"
-  add_foreign_key "wents", "shrines"
-  add_foreign_key "wents", "users"
 end

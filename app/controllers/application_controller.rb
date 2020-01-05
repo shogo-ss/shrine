@@ -11,8 +11,7 @@ class ApplicationController < ActionController::Base
   end
   
   def counts(user)
-    @count_wents = user.wents.count
-    @count_concerns = user.concerns.count
+    @count_user_reviews = user.reviews.count
+    @count_user_concerns = user.concerns.count
   end
-
 end

@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:show, :edit, :update]
-  
-  def show
-    @user = User.find(params[:id])
-  end
+  before_action :require_user_logged_in, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -14,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
-      redirect_to @user
+      redirect_to login_path
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
@@ -32,7 +28,7 @@ class UsersController < ApplicationController
     
     if @user.update(user_params)
       flash[:success] = 'ユーザ情報を編集しました。'
-      redirect_to @user
+      redirect_to wents_user_path(@user)
     else
       flash.now[:danger] = 'ユーザ情報の編集に失敗しました。'
       render :edit
@@ -42,16 +38,27 @@ class UsersController < ApplicationController
     end
   end
   
-  def wents
+  def reviews
     @user = User.find(params[:id])
-    @wents = @user.wents.page(params[:page])
+    @reviews = @user.reviews.page(params[:page])
+    @shrine = @user.reviews_shrine
+    @picture = Picture.find_by(@shrine_id)
     counts(@user)
+    #@picture = @user.reviews_pictures.first
+    #@picture = @shrine.reviews_pictures.first
+    #@picture = @reviews.reviews_pictures.first
+    #counts(@shrine)
+    render "users/show"
   end
   
   def concerns
     @user = User.find(params[:id])
     @concerns = @user.concerns.page(params[:page])
+    @shrine = @user.concerns_shrine
+    @picture = Picture.find_by(@shrine_id)
+    #@picture = @user.reviews_pictures.first
     counts(@user)
+    render "users/show"
   end
   
   private

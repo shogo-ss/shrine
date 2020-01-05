@@ -1,7 +1,28 @@
-<h1>神社一覧</h1>
+<%= render "searchnav" %>
 
-<ul>
-  <% @shrine.each do |shrine| %>
-    <li><%= link_to shrine.name, shrine_path(shrine) %></li>
-  <% end %>
+<ul class="nav">
+  <li class="nav-item"><%= link_to "北海道", root_path, class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "東北", shrines_path, class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "関東", new_shrine_path, class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "北陸", wents_user_path(current_user), class:"nav-link" %></li>
 </ul>
+
+<h2>神社一覧</h2>
+<div class="row">
+  
+<% @shrine.each do |shrine| %>
+  <div class="col-md-6">
+　  <div class="card">
+  　   <div class="card-body">
+  　     <h5>
+        <%= link_to shrine.name, shrine_path(shrine) %>
+        (<%= shrine.prefecture.name %>)
+        </h5>
+       <h6>
+        ☆☆☆☆☆<%= shrine.reviews.average(:evaluation) %>
+        レビュー<%= shrine.reviews.count %>
+       </h6>
+      </div>
+    </div>
+  </div>
+<% end %>

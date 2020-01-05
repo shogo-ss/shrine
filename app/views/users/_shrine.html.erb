@@ -1,0 +1,28 @@
+<div class="row">
+  <% @shrine.each do |shrine| %>
+  <div class="col-md-4">
+  <div class="card">
+    <%= image_tag @picture.image.to_s, class: 'card-img-top' %>
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to shrine.name, shrine_path(shrine.id) %></h5>
+    <table class="table">
+  　　<thead>
+    　　<tr>
+      　　<td>◉</td>
+      　　<td>♡</td>
+      　　<td>☆</td>
+    　　</tr>
+  　　</thead>
+  　　<tbody>
+    　　<tr>
+      　　<td><%= shrine.reviews.count %></td>
+      　　<td><%= shrine.concerns.count %></td>
+      　　<td><%= shrine.reviews.average(:evaluation) %></td>
+    　　</tr>
+    　</tbody>
+    </table>
+  </div>
+  </div>
+  </div>
+  <% end %>
+</div>

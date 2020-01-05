@@ -10,23 +10,14 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :reviews
-  #has_many :shrines, through: :reviews
-  has_many :wents
-  has_many :wents_shrine, through: :wents, source: :shrine
+  has_many :reviews_shrine, through: :reviews, source: :shrine
   has_many :concerns
   has_many :concerns_shrine, through: :concerns, source: :shrine
+  has_many :reviews_pictures, through: :reviews, source: :pictures
+  #has_many :reviews_pictures, through: :reviews_shrine, source: :pictures
   
-  def went(shrine)
-      self.wents.find_or_create_by(shrine_id: shrine.id)
-  end
-  
-  def unwent(shrine)
-    went = self.wents.find_by(shrine_id: shrine.id)
-    went.destroy if went
-  end
-  
-  def went?(shrine)
-    self.wents_shrine.include?(shrine)
+  def review?(shrine)
+    self.reviews_shrine.include?(shrine)
   end
   
   def concern(shrine)

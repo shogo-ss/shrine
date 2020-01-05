@@ -19,6 +19,15 @@
       
       <%= f.hidden_field :user_id, value: @user.id %>
       <%= f.hidden_field :shrine_id, value: @shrine.id %>
+      
+      <%= f.fields_for :pictures do |picture| %>
+      <div class="form-group">
+        <button type="button" class="btn btn-outline-secondary rounded-pill">
+          <%= picture.file_field :image, accept: "image/jpeg,image/jpg,image/png" %>
+        </button>
+        
+      </div>
+      <% end %>
 
       <%= f.submit 'レビューする', class: 'btn btn-primary btn-block' %>
     <% end %>

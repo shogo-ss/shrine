@@ -1,0 +1,17 @@
+<% @reviews.each do |review| %>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= review.user.name %></h5>
+    
+  <% review.pictures.each do |picture| %>
+  <%= image_tag picture.image.to_s, :size =>'150x150' %>
+  <% end %>
+  
+    <P>☆☆☆☆☆<%= review.evaluation %></P>
+    
+  <p>コメント</p>
+  <%= review.comment %>
+  </div>
+</div>
+<% end %>
