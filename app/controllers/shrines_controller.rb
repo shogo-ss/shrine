@@ -2,8 +2,11 @@ class ShrinesController < ApplicationController
   before_action :require_user_logged_in, except: [:index, :show]
   
   def index
-    @shrine = Shrine.all
-    @prefecture = Prefecture.all
+    @prefecture = Prefecture.where(area: params[:area_id])
+    @shrine = Shrine.where(prefecture_id: params[:prefecture_id])
+    unless @shrine.present?
+      @shrine = Shrine.all
+    end
   end
   
   def new

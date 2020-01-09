@@ -1,9 +1,79 @@
-<img src="" alt="">
+<div class="text-center">
+<%= image_tag "/assets/中尊寺.jpg",width: "100%", alt: "北海道" %>
 
-<div>
-  <ul>
-    <li> <%= link_to "北海道", "#" %> </li>
-    <li> <%= link_to "東北", "#" %> </li>
-    <li> <%= link_to "関東", "#" %> </li>
+<div class="row">
+  <ul class="nav">
+    <div class="col-6">
+    <li class="nav-item">
+      <div class=example>
+      <%= link_to image_tag("/assets/狩宿諏訪神社.jpg", alt: "北海道"), shrines_path(area_id: "1"), class:"nav-link" %>
+      <p>北海道</p>
+      </div>
+    </li>
+    </div>
+    
+    <div class="col-6">
+    <li class="nav-item">
+      <div class=example>
+      <%= link_to image_tag("/assets/御座石神社.jpg", alt: "東北"), shrines_path(area_id: "2"), class:"nav-link" %>
+      <p>東北</p>
+      </div>
+    </li>
+    </div>
+    
+    <div class="col-6">
+    <li class="nav-item">
+      <div class=example>
+      <%= link_to image_tag("/assets/浅草雷門.jpg", alt: "関東"), shrines_path(area_id: "3"), class:"nav-link" %>
+      <p>関東</p>
+      </div>
+    </li>
+    </div>
+    
+    <div class="col-6">
+    <li class="nav-item">
+      <div class=example>
+      <%= link_to image_tag("/assets/車山神社.jpg", alt: "中部"), shrines_path(area_id: "4"), class:"nav-link" %>
+      <p>中部</p>
+      </div>
+    </li>
+    </div>
+    
+    <div class="col-6">
+    <li class="nav-item">
+      <div class=example>
+      <%= link_to image_tag("/assets/京都伏見稲荷大社.jpg", alt: "近畿"), shrines_path(area_id: "5"), class:"nav-link" %>
+      <p>近畿</p>
+      </div>
+    </li>
+    </div>
+    
+    <div class="col-6">
+    <li class="nav-item">
+      <div class=example>
+      <%= link_to image_tag("/assets/磐台寺観音堂.jpg", alt: "中国"), shrines_path(area_id: "6"), class:"nav-link" %>
+      <p>中国</p>
+      </div>
+    </li>
+    </div>
+    
+    <div class="col-6">
+    <li class="nav-item">
+      <div class=example>
+      <%= link_to image_tag("/assets/荒澤不動明王.jpg", alt: "四国"), shrines_path(area_id: "7"), class:"nav-link" %>
+      <p>四国</p>
+      </div>
+    </li>
+    </div>
+    
+    <div class="col-6">
+    <li class="nav-item">
+      <div class=example>
+      <%= link_to image_tag("/assets/鵜戸神宮.jpg", alt: "九州"), shrines_path(area_id: "8"), class:"nav-link" %>
+      <p>九州</p>
+      </div>
+    </li>
+    </div>
   </ul>
+</div>
 </div>

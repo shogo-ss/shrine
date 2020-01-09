@@ -42,23 +42,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @reviews = @user.reviews.page(params[:page])
     @shrine = @user.reviews_shrine
-    @picture = Picture.find_by(@shrine_id)
     counts(@user)
-    #@picture = @user.reviews_pictures.first
-    #@picture = @shrine.reviews_pictures.first
-    #@picture = @reviews.reviews_pictures.first
-    #counts(@shrine)
-    render "users/show"
+    render "users/show_wents"
   end
   
   def concerns
     @user = User.find(params[:id])
     @concerns = @user.concerns.page(params[:page])
     @shrine = @user.concerns_shrine
-    @picture = Picture.find_by(@shrine_id)
-    #@picture = @user.reviews_pictures.first
     counts(@user)
-    render "users/show"
+    render "users/show_concerns"
   end
   
   private

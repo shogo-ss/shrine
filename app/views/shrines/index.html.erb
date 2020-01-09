@@ -1,10 +1,18 @@
-<%= render "searchnav" %>
+<ul class="nav">
+  <li class="nav-item"><%= link_to "北海道", shrines_path(area_id: "1"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "東北", shrines_path(area_id: "2"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "関東", shrines_path(area_id: "3"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "中部", shrines_path(area_id: "4"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "近畿", shrines_path(area_id: "5"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "中国", shrines_path(area_id: "6"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "四国", shrines_path(area_id: "7"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "九州", shrines_path(area_id: "8"), class:"nav-link" %></li>
+</ul>
 
 <ul class="nav">
-  <li class="nav-item"><%= link_to "北海道", root_path, class:"nav-link" %></li>
-  <li class="nav-item"><%= link_to "東北", shrines_path, class:"nav-link" %></li>
-  <li class="nav-item"><%= link_to "関東", new_shrine_path, class:"nav-link" %></li>
-  <li class="nav-item"><%= link_to "北陸", wents_user_path(current_user), class:"nav-link" %></li>
+  <% @prefecture.each do |prefecture| %>
+  <li class="nav-item"><%= link_to prefecture.name, shrines_path(prefecture_id: prefecture.id, area_id: prefecture.area), class:"nav-link" %></li>
+  <% end %>
 </ul>
 
 <h2>神社一覧</h2>
@@ -12,16 +20,24 @@
   
 <% @shrine.each do |shrine| %>
   <div class="col-md-6">
-　  <div class="card">
-  　   <div class="card-body">
+　  <div class="card mb-3">
+　    <div class="row">
+　    <div class="col-5">
   　     <h5>
         <%= link_to shrine.name, shrine_path(shrine) %>
         (<%= shrine.prefecture.name %>)
         </h5>
-       <h6>
+        <h6>
         ☆☆☆☆☆<%= shrine.reviews.average(:evaluation) %>
         レビュー<%= shrine.reviews.count %>
-       </h6>
+        </h6>
+      </div>
+      
+      <div class="col-6">
+      <div class="card-body">
+        <%= image_tag shrine.reviews_pictures.first.image.to_s, class: 'card-img-top' %>
+      </div>
+      </div>
       </div>
     </div>
   </div>

@@ -1,8 +1,8 @@
 <div class="row">
   <% @shrine.each do |shrine| %>
-  <div class="col-md-4">
+  <div class="col-4">
   <div class="card">
-    <%= image_tag @picture.image.to_s, class: 'card-img-top' %>
+    <%= image_tag shrine.reviews_pictures.first.image.to_s, class: 'card-img-top' %>
   <div class="card-body">
     <h5 class="card-title"><%= link_to shrine.name, shrine_path(shrine.id) %></h5>
     <table class="table">
