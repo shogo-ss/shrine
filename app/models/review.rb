@@ -4,6 +4,6 @@ class Review < ApplicationRecord
   validates :evaluation, presence: true
   
   has_many :pictures, inverse_of: :review, dependent: :destroy
-  accepts_nested_attributes_for :pictures
+  accepts_nested_attributes_for :pictures, allow_destroy: true
   
 end

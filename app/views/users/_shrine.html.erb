@@ -1,10 +1,10 @@
 <div class="row">
-  <% @shrine.each do |shrine| %>
+  <% @reviews.each do |review| %>
   <div class="col-4">
   <div class="card">
-    <%= image_tag shrine.reviews_pictures.first.image.to_s, class: 'card-img-top' %>
+    <%= image_tag review.shrine.reviews_pictures.first.image.url, class: 'card-img-top' %>
   <div class="card-body">
-    <h5 class="card-title"><%= link_to shrine.name, shrine_path(shrine.id) %></h5>
+    <h5 class="card-title"><%= link_to review.shrine.name, shrine_path(review.shrine.id) %></h5>
     <table class="table">
   　　<thead>
     　　<tr>
@@ -15,9 +15,9 @@
   　　</thead>
   　　<tbody>
     　　<tr>
-      　　<td><%= shrine.reviews.count %></td>
-      　　<td><%= shrine.concerns.count %></td>
-      　　<td><%= shrine.reviews.average(:evaluation) %></td>
+      　　<td><%= review.shrine.reviews.count %></td>
+      　　<td><%= review.shrine.concerns.count %></td>
+      　　<td><%= review.shrine.reviews.average(:evaluation).round(1) %></td>
     　　</tr>
     　</tbody>
     </table>

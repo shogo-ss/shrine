@@ -1,0 +1,39 @@
+.margin{
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+.example {
+  position: relative;
+  }
+
+.example p {
+  position: absolute;
+  color: white;
+  font-weight: bold; 
+  font-size: 2em;/*サイズ2倍*/
+  font-family :Quicksand, sans-serif;/*Google Font*/
+  bottom: 10%;
+  right: 10%;
+  margin:0;
+  padding:0;
+  }
+
+.example img {
+  width: 100%;
+  }
+  
+.navbar .navbar-nav .nav-link {
+    color: white;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  }
+
+.navbar {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #212529;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: white;
+}

@@ -13,17 +13,13 @@ Rails.application.routes.draw do
     end
   end
   resources :shrines do
-    member do
-      get :review
-      get :review_edit
-    end
     collection do
       get :search
     end
   end
   
-  resources :reviews, only: [:create,:destroy,:update]
-  #except: [:index, :show]
+  resources :reviews, except: [:index, :show]
+  #only: [:create,:destroy,:update]
   resources :concerns, only: [:create,:destroy]
   
 end

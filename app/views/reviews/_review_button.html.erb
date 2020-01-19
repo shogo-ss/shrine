@@ -4,5 +4,5 @@
     <%= f.submit '行った◉', class: 'btn btn-warning', data: { confirm: 'レビューも削除されます。本当に削除してよろしいですか？' }%>
   <% end %>
 <% else %>
-  <%= link_to "行った◉", review_shrine_path , class: 'btn btn-light'%>
+  <%= link_to "行った◉", new_review_path(shrine_id: shrine.id) , class: 'btn btn-light'%>
 <% end %>

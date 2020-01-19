@@ -3,11 +3,15 @@
   <%= @shrine.prefecture.name %>
   <%= @shrine.address %>
 </h6>
+
+<% if current_user.admin? %>
+<%= link_to "神社情報の編集", edit_shrine_path %><br>
 <%= link_to "神社を削除する", @shrine, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+<% end %>
 
 <ul class="nav">
   <li>
-    <h5>☆☆☆☆☆<%= @shrine.reviews.average(:evaluation) %></h5>
+    <h5>☆☆☆☆☆<%= @shrine.reviews.average(:evaluation).round(1) %></h5>
   </li>
   <li>
     <%= render 'reviews/review_button', shrine: @shrine %>
@@ -20,9 +24,6 @@
   </li>
   <li>
     <h5><%= @shrine.concerns.count %></h5>
-  </li>
-  <li>
-    <%= link_to "レビューを編集する", review_edit_shrine_path %>
   </li>
 </ul>
     

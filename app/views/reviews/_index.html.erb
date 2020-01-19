@@ -2,7 +2,14 @@
 
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title"><%= review.user.name %></h5>
+    <ul class="nav">
+    <li><h5 class="card-title"><%= review.user.name %></h5></li>
+    <li>
+    <% if current_user==review.user %>
+    <%= link_to "レビューを編集する", edit_review_path(shrine_id: @shrine.id) %>
+    <% end %>
+    </li>
+    </ul>
     
   <% review.pictures.each do |picture| %>
   <%= image_tag picture.image.to_s, :size =>'150x150' %>
@@ -10,8 +17,10 @@
   
     <P>☆☆☆☆☆<%= review.evaluation %></P>
     
+  <% if review.comment? %>
   <p>コメント</p>
   <%= review.comment %>
+  <% end %>
   </div>
 </div>
 <% end %>

@@ -1,5 +1,9 @@
-<ul class="nav">
-  <li class="nav-item"><%= link_to "北海道", shrines_path(area_id: "1"), class:"nav-link" %></li>
+<%= image_tag "/assets/中尊寺.jpg",width: "100%",alt: "神社巡り" %>
+<nav class="navbar navbar-expand navbar-dark">
+<div class="container">
+
+<ul class="navbar-nav">
+  <li class="nav-item "><%= link_to "北海道", shrines_path(area_id: "1"), class:"nav-link" %></li>
   <li class="nav-item"><%= link_to "東北", shrines_path(area_id: "2"), class:"nav-link" %></li>
   <li class="nav-item"><%= link_to "関東", shrines_path(area_id: "3"), class:"nav-link" %></li>
   <li class="nav-item"><%= link_to "中部", shrines_path(area_id: "4"), class:"nav-link" %></li>
@@ -8,12 +12,15 @@
   <li class="nav-item"><%= link_to "四国", shrines_path(area_id: "7"), class:"nav-link" %></li>
   <li class="nav-item"><%= link_to "九州", shrines_path(area_id: "8"), class:"nav-link" %></li>
 </ul>
-
-<ul class="nav">
+</div>
+</nav>
+<nav class="navbar navbar-expand navbar-dark">
+<ul class="navbar-nav">
   <% @prefecture.each do |prefecture| %>
   <li class="nav-item"><%= link_to prefecture.name, shrines_path(prefecture_id: prefecture.id, area_id: prefecture.area), class:"nav-link" %></li>
   <% end %>
 </ul>
+</nav>
 
 <h2>神社一覧</h2>
 <div class="row">
@@ -28,14 +35,16 @@
         (<%= shrine.prefecture.name %>)
         </h5>
         <h6>
-        ☆☆☆☆☆<%= shrine.reviews.average(:evaluation) %>
+        ☆☆☆☆☆<%= shrine.reviews.average(:evaluation).round(1) %>
         レビュー<%= shrine.reviews.count %>
         </h6>
       </div>
       
       <div class="col-6">
       <div class="card-body">
-        <%= image_tag shrine.reviews_pictures.first.image.to_s, class: 'card-img-top' %>
+        <% if shrine.reviews_pictures.present? %>
+        <%= image_tag shrine.reviews_pictures.first.image.url, class: 'card-img-top' %>
+        <% end %>
       </div>
       </div>
       </div>

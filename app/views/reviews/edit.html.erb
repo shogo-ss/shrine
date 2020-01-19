@@ -22,6 +22,11 @@
       
       <%= f.fields_for :pictures do |picture| %>
       <div class="form-group">
+        <label>
+        <%= picture.check_box :_destroy, class: 'form-control'%>
+        画像を削除
+        </label>
+        
         <button type="button" class="btn btn-outline-secondary rounded-pill">
           <%= picture.file_field :image, accept: "image/jpeg,image/jpg,image/png" %>
         </button>

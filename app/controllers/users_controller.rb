@@ -40,16 +40,14 @@ class UsersController < ApplicationController
   
   def reviews
     @user = User.find(params[:id])
-    @reviews = @user.reviews.page(params[:page])
-    @shrine = @user.reviews_shrine
+    @reviews = @user.reviews.order(created_at: :desc).page(params[:page])
     counts(@user)
     render "users/show_wents"
   end
   
   def concerns
     @user = User.find(params[:id])
-    @concerns = @user.concerns.page(params[:page])
-    @shrine = @user.concerns_shrine
+    @reviews = @user.concerns.order(created_at: :desc).page(params[:page])
     counts(@user)
     render "users/show_concerns"
   end
@@ -57,6 +55,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :user_image)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :user_image, :remove_user_image)
   end
 end
