@@ -34,6 +34,7 @@
         <%= link_to shrine.name, shrine_path(shrine) %>
         (<%= shrine.prefecture.name %>)
         </h5>
+        <% if shrine.reviews.present? %>
         <h6>
         ☆☆☆☆☆<%= shrine.reviews.average(:evaluation).round(1) %>
         レビュー<%= shrine.reviews.count %>
@@ -47,6 +48,7 @@
         <% end %>
       </div>
       </div>
+        <% end %>
       </div>
     </div>
   </div>
