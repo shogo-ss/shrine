@@ -55,7 +55,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'kaminari'
 
-gem "carrierwave",'~> 1.0.0'
+gem "carrierwave", '~> 1.3', '>= 1.3.1'
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
 end
+gem 'cloudinary'
