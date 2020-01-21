@@ -3,14 +3,14 @@
 <div class="container">
 
 <ul class="navbar-nav">
-  <li class="nav-item "><%= link_to "北海道", shrines_path(area_id: "1"), class:"nav-link" %></li>
-  <li class="nav-item"><%= link_to "東北", shrines_path(area_id: "2"), class:"nav-link" %></li>
-  <li class="nav-item"><%= link_to "関東", shrines_path(area_id: "3"), class:"nav-link" %></li>
-  <li class="nav-item"><%= link_to "中部", shrines_path(area_id: "4"), class:"nav-link" %></li>
-  <li class="nav-item"><%= link_to "近畿", shrines_path(area_id: "5"), class:"nav-link" %></li>
-  <li class="nav-item"><%= link_to "中国", shrines_path(area_id: "6"), class:"nav-link" %></li>
-  <li class="nav-item"><%= link_to "四国", shrines_path(area_id: "7"), class:"nav-link" %></li>
-  <li class="nav-item"><%= link_to "九州", shrines_path(area_id: "8"), class:"nav-link" %></li>
+  <li class="nav-item "><%= link_to "北海道地方", shrines_path(area_id: "1"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "東北地方", shrines_path(area_id: "2"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "関東地方", shrines_path(area_id: "3"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "中部地方", shrines_path(area_id: "4"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "近畿地方", shrines_path(area_id: "5"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "中国地方", shrines_path(area_id: "6"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "四国地方", shrines_path(area_id: "7"), class:"nav-link" %></li>
+  <li class="nav-item"><%= link_to "九州地方", shrines_path(area_id: "8"), class:"nav-link" %></li>
 </ul>
 </div>
 </nav>
@@ -24,7 +24,6 @@
 
 <h2>神社一覧</h2>
 <div class="row">
-  
 <% @shrine.each do |shrine| %>
   <div class="col-md-6">
 　  <div class="card mb-3">
@@ -39,17 +38,19 @@
         ☆☆☆☆☆<%= shrine.reviews.average(:evaluation).round(1) %>
         レビュー<%= shrine.reviews.count %>
         </h6>
+        <% end %>
       </div>
-      
       <div class="col-6">
       <div class="card-body">
         <% if shrine.reviews_pictures.present? %>
         <%= image_tag shrine.reviews_pictures.first.image.url, class: 'card-img-top' %>
+        <% else %>
+        <%= image_tag "/assets/default.png", :size =>'100x140', alt: "image", class: 'card-img-top' %>
         <% end %>
       </div>
       </div>
-        <% end %>
       </div>
     </div>
   </div>
 <% end %>
+</div>
