@@ -2,7 +2,11 @@
   <% @reviews.each do |review| %>
   <div class="col-4">
   <div class="card">
+    <% if review.shrine.reviews_pictures.present? %>
     <%= image_tag review.shrine.reviews_pictures.first.image.url, class: 'card-img-top' %>
+    <% else %>
+    <%= image_tag "/assets/default.png", :size =>'100x232', alt: "image", class: 'card-img-top' %>
+    <% end %>
   <div class="card-body">
     <h5 class="card-title"><%= link_to review.shrine.name, shrine_path(review.shrine.id) %></h5>
     <table class="table">
@@ -17,7 +21,12 @@
     　　<tr>
       　　<td><%= review.shrine.reviews.count %></td>
       　　<td><%= review.shrine.concerns.count %></td>
+      　　<% if review.shrine.reviews.present? %>
       　　<td><%= review.shrine.reviews.average(:evaluation).round(1) %></td>
+      　　<% else %>
+      　　<td>0</td>
+      　　<% end %>
+      　　
     　　</tr>
     　</tbody>
     </table>
