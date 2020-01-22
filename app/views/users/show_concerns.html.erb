@@ -1,21 +1,17 @@
 <div class="text-center">
   <h2>マイページ</h2>
-  
-<div class="row">
-  
-  <div class="col-md-3">
+  <div class="offset-md-4 col-md-4">
     <div class="card">
       <div class="card-title">
         <h3><%= @user.name %></h3>
       </div>
       <div class="card-body">
-        <%= image_tag @user.user_image.url, width: "100%" %>
+        <%= image_tag @user.user_image.url, width: "80%" %>
       </div>
         <%= link_to "ユーザー情報の編集", edit_user_path(@user) %>
     </div>
   </div>
-  
-  <div class="col-md-9">
+  <div class="offset-md-1 col-md-10">
     <ul class="nav nav-fill">
       <li class="nav-item">
         <%= link_to "行った◉", wents_user_path(current_user), class: 'btn btn-light btn-block' %> 
@@ -28,5 +24,4 @@
     </ul>
   </div>
 </div>
-
 <%= render "shrine" %>
