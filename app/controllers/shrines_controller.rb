@@ -5,11 +5,11 @@ class ShrinesController < ApplicationController
     @prefecture = Prefecture.where(area: params[:area_id])
     if params[:prefecture_id].present?
       @shrine = Shrine.where(prefecture_id: params[:prefecture_id]).order(id: :asc)
-    elsif
+    else
       @shrine = Shrine.where(prefecture_id: @prefecture.pluck(:id)).order(id: :asc)
-    #else
-      #@shrine = Shrine.all
-    #unless @shrine.present?
+    end
+    unless @shrine.present?
+    @shrine = Shrine.all
     end
   end
   
