@@ -15,7 +15,7 @@
   <%= image_tag picture.image.to_s, :size =>'150x150' %>
   <% end %>
   
-    <P>☆☆☆☆☆<%= review.evaluation %></P>
+<%= render 'layouts/star', result: review.evaluation.to_f %>
     
   <% if review.comment? %>
   <p>コメント</p>

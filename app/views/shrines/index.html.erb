@@ -34,8 +34,8 @@
         (<%= shrine.prefecture.name %>)
         </h5>
         <% if shrine.reviews.present? %>
+        <%= render "layouts/star" ,result: shrine.reviews.average(:evaluation).round(1) %>
         <h6>
-        ☆☆☆☆☆<%= shrine.reviews.average(:evaluation).round(1) %>
         レビュー<%= shrine.reviews.count %>
         </h6>
         <% end %>
