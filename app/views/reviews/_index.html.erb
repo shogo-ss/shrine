@@ -6,7 +6,7 @@
     <li><h5 class="card-title"><%= review.user.name %></h5></li>
     <li>
     <% if current_user==review.user %>
-    <%= link_to "レビューを編集する", edit_review_path(shrine_id: @shrine.id) %>
+    <%= link_to "レビューを編集する", edit_review_path(review_id: review.id) %>
     <% end %>
     </li>
     </ul>

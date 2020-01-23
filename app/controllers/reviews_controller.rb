@@ -11,12 +11,14 @@ class ReviewsController < ApplicationController
   
   def edit
     @user = current_user
-    @shrine = Shrine.find(params[:id])
-    @review = current_user.reviews.find_by(shrine_id: @shrine.id)
+    @review = Review.find(params[:review_id])
+    @shrine = Shrine.find(@review.shrine.id)
     unless @review.pictures.present?
-    @review.pictures.build
+      @review.pictures.build
     end
-    
+    unless @review.user == current_user
+      redirect_to root_url
+    end
     #t=3-@lesson.lesson_images.size.to_i(複数投稿)
     #t.times{@lesson.lesson_images.build}
     #3.times { @review.pictures.build } 
