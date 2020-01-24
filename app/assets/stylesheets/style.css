@@ -7,12 +7,13 @@
   position: relative;
   }
 
-.example p {
+.example .p {
   position: absolute;
   color: white;
   font-weight: bold; 
   font-size: 2em;/*サイズ2倍*/
   font-family :Quicksand, sans-serif;/*Google Font*/
+  
   bottom: 10%;
   right: 10%;
   margin:0;
