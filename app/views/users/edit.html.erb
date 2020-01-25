@@ -14,7 +14,7 @@
       
       <div class="form-group">
         <% if @user.user_image? %>
-        <%= image_tag @user.user_image.url, width: "50%" %><br>
+        <%= image_tag @user.user_image.url, alt:"image" %><br>
         <label>
         <%= f.check_box :remove_user_image, class: 'form-control'%>
         画像を削除

@@ -42,3 +42,20 @@
 .fa-yellow{
     color: #ffd700 ;
 }
+
+.card img {
+  width: auto;
+  height: 200px;
+  }
+
+.card-body img {
+  width: 100%;
+  }
+
+.form-group img {
+  width: 50%;
+  }
+
+.review-image img {
+  width: 30%;
+  }

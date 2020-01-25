@@ -12,7 +12,7 @@
 <ul class="nav">
   <% if @shrine.reviews.present? %>
   <li>
-    <h5><%= render "layouts/star" ,result: @shrine.reviews.average(:evaluation).round(1) %></h5>
+    <%= render "layouts/star" ,result: @shrine.reviews.average(:evaluation).round(1) %>
   </li>
   <% end %>
   <li>
