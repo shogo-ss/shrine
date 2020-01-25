@@ -37,6 +37,9 @@ class ReviewsController < ApplicationController
       flash.now[:danger] = 'レビューに失敗しました。'
       @user = current_user
       @shrine = shrine
+      unless @review.pictures.present?
+      @review.pictures.build
+      end
       render :new
     end
   end

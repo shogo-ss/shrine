@@ -29,10 +29,8 @@
         </label>
         <% end %>
         
-        <button type="button" class="btn btn-outline-secondary rounded-pill">
-          <%= picture.file_field :image, accept: "image/jpeg,image/jpg,image/png" %>
+          <%= picture.file_field :image, accept: "image/jpeg,image/jpg,image/png", class: "btn btn-outline-secondary rounded-pill" %>
           <%= f.hidden_field :image_cache %>
-        </button>
         (任意)
       </div>
       <% end %>

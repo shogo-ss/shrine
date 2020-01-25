@@ -14,7 +14,7 @@
 
       <div class="form-group">
         <%= f.label :comment, 'コメント(任意)' %>
-        <%= f.text_area :comment, class: 'form-control', size: "100×50" %>
+        <%= f.text_area :comment, class: 'form-control', cols: "50" %>
       </div>
       
       <%= f.hidden_field :user_id, value: @user.id %>
@@ -23,10 +23,8 @@
       
       <%= f.fields_for :pictures do |picture| %>
       <div class="form-group">
-        <button type="button" class="btn btn-outline-secondary rounded-pill">
-          <%= picture.file_field :image, accept: "image/jpeg,image/jpg,image/png" %>
+          <%= picture.file_field :image, accept: "image/jpeg,image/jpg,image/png", class: "btn btn-outline-secondary rounded-pill" %>
           <%= f.hidden_field :image_cache %>
-        </button>
         (任意)
       </div>
       <% end %>
