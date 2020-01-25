@@ -4,12 +4,12 @@ class ShrinesController < ApplicationController
   def index
     @prefecture = Prefecture.where(area: params[:area_id])
     if params[:prefecture_id].present?
-      @shrine = Shrine.where(prefecture_id: params[:prefecture_id]).order(id: :asc).page(params[:page]).per(10)
+      @shrine = Shrine.where(prefecture_id: params[:prefecture_id]).order(prefecture_id: :asc).page(params[:page]).per(10)
     else
-      @shrine = Shrine.where(prefecture_id: @prefecture.pluck(:id)).order(id: :asc).page(params[:page]).per(10)
+      @shrine = Shrine.where(prefecture_id: @prefecture.pluck(:id)).order(prefecture_id: :asc).page(params[:page]).per(10)
     end
     unless @shrine.present?
-    @shrine = Shrine.all.page(params[:page]).per(10)
+    @shrine = Shrine.all.order(prefecture_id: :asc).page(params[:page]).per(10)
     end
   end
   
