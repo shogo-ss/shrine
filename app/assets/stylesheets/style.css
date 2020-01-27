@@ -43,13 +43,21 @@
     color: #ffd700 ;
 }
 
+.card-img-top{
+  height: 300px;
+  display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .card img {
-  width: auto;
-  height: 200px;
+  max-height: 100%;
+  max-width: 100%;
   }
 
 .card-body img {
-  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
   }
 
 .form-group img {

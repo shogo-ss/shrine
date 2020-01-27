@@ -6,7 +6,7 @@
         <h3><%= @user.name %></h3>
       </div>
       <div class="card-body">
-        <%= image_tag @user.user_image.url, alt:"image" %>
+        <%= image_tag @user.user_image.url, alt:"image",style: "max-height: 200px" %>
       </div>
         <%= link_to "ユーザー情報の編集", edit_user_path(@user) %>
     </div>

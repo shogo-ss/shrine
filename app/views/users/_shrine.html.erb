@@ -1,13 +1,16 @@
 <div class="text-center">
 <div class="row">
   <% @reviews.each do |review| %>
+  
   <div class="col-4">
   <div class="card">
+    <div class="card-img-top">
     <% if review.shrine.reviews_pictures.present? %>
-    <%= image_tag review.shrine.reviews_pictures.first.image.url, alt:"image", class: 'card-img-top' %>
+    <%= image_tag review.shrine.reviews_pictures.first.image.url, alt:"image" %>
     <% else %>
-    <%= image_tag "/assets/default.png", alt: "image", class: 'card-img-top' %>
+    <%= image_tag "/assets/default.png", alt: "image" %>
     <% end %>
+    </div>
   <div class="card-body">
     <h5 class="card-title"><%= link_to review.shrine.name, shrine_path(review.shrine.id) %></h5>
       <table class="table">
@@ -30,6 +33,7 @@
       </table>
   </div>
   </div>
+ 
   </div>
   <% end %>
 </div>

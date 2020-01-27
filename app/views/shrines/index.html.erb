@@ -28,7 +28,7 @@
 <div class="row">
 <% @shrine.each do |shrine| %>
   <div class="col-md-6">
-　  <div class="card mb-3">
+　  <div class="card mb-3" style="height: 200px">
 　    <div class="row">
 　    <div class="col-5">
   　     <h5>
@@ -43,11 +43,11 @@
         <% end %>
       </div>
       <div class="col-6">
-      <div class="card-body">
+      <div class="card-body text-center">
         <% if shrine.reviews_pictures.present? %>
-        <%= image_tag shrine.reviews_pictures.first.image.url, alt: "image", class: 'card-img-top' %>
+        <%= image_tag shrine.reviews_pictures.first.image.url, alt: "image",style: "max-height: 140px" %>
         <% else %>
-        <%= image_tag "/assets/default.png", :size =>'100x140', alt: "image", class: 'card-img-top' %>
+        <%= image_tag "/assets/default.png", alt: "image", style: "max-height: 140px" %>
         <% end %>
       </div>
       </div>
