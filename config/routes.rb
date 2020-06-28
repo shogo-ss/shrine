@@ -12,9 +12,10 @@ Rails.application.routes.draw do
       get :concerns
     end
   end
+  
   resources :shrines do
     collection do
-      get :search
+      get :search, to: "shrines#index"
     end
   end
   

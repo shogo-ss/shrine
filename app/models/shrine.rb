@@ -10,4 +10,8 @@ class Shrine < ApplicationRecord
   has_many :concerns_user, through: :concerns
   has_many :reviews_pictures, through: :reviews, source: :pictures
   
+  def self.shrine_search(search)
+      Shrine.where(['name LIKE ?', "%#{search}%"])
+  end
+  
 end

@@ -25,6 +25,12 @@
 </nav>
 
 <h2>神社一覧</h2>
+<% if @search %>
+<h3>"<%= @search %>"の検索結果(<%= @count %>件)</h3>
+  <% if @nosearch %>
+  <h3>"<%= @nosearch %>"はヒットしませんでした。</h3>
+  <% end %>
+<% end %>
 <div class="row">
 <% @shrine.each do |shrine| %>
   <div class="col-md-6">
