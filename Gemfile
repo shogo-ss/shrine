@@ -60,3 +60,8 @@ group :production do
   gem 'pg', '>= 0.18', '< 2.0'
 end
 gem 'cloudinary'
+
+# google map用
+#"gmaps4rails" = google maps表示、"geocoder" = :addressを緯度経度に変換
+gem "gmaps4rails"
+gem "geocoder"
