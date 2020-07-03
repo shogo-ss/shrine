@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_25_092104) do
+ActiveRecord::Schema.define(version: 2020_07_03_113840) do
 
   create_table "concerns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_01_25_092104) do
     t.bigint "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["address", "prefecture_id"], name: "index_shrines_on_address_and_prefecture_id", unique: true
     t.index ["prefecture_id"], name: "index_shrines_on_prefecture_id"
   end
