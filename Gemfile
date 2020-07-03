@@ -65,3 +65,6 @@ gem 'cloudinary'
 #"gmaps4rails" = google maps表示、"geocoder" = :addressを緯度経度に変換
 gem "gmaps4rails"
 gem "geocoder"
+
+#環境変数を定義できる(API等)
+gem "dotenv-rails"
