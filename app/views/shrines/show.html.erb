@@ -1,3 +1,5 @@
+<div class="row">
+  <div class="col-md-4">
 <h3><%= @shrine.name %></h3>
 <h6>住所:
   <%= @shrine.prefecture.name %>
@@ -28,6 +30,51 @@
     <h5><%= @shrine.concerns.count %></h5>
   </li>
 </ul>
+  </div>
+
+<script>
+  function initMap() {
+//latitude,longitudeから位置を特定
+    var test ={lat: <%= @shrine.latitude %>, lng: <%= @shrine.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15, 
+              center: test
+              });
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    var contentString = '住所：<%= @shrine.address %>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+//Map上の指定した位置にピンを挿して表示する
+    var marker = new google.maps.Marker({
+                  position:test,
+                  map: map,
+                  title: contentString
+                 });
+
+     marker.addListener('click', function() {
+       infowindow.open(map, marker);
+     });
+  }
+</script>
+
+<!--以下の記述の中にあるYOUR_API_KEYには取得したご自身のAPIキーを記述-->
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"></script>
+<!--表示するmapのcssです。ご自身でカスタマイズしてください。高さが設定されていないと表示されないことがある-->
+<!--<style type="text/css">
+  #map {
+    height: 200px;
+    width: 100%;
+  }
+</style>-->
+
+  <div class="col-md-8">
+    <div id="map" style="height: 200px; width: 100%;"></div>
+  </div>
+</div>
     
 <h3>レビュー<%= @shrine.reviews.count %></h3>
 

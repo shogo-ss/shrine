@@ -3,6 +3,10 @@ class Shrine < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
   validates :address, presence: true, length: { maximum: 50 },
                       :uniqueness => { :scope => :prefecture_id }
+  
+  #google maps
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
                       
   has_many :reviews, dependent: :destroy
   has_many :reviews_user, through: :reviews
@@ -13,5 +17,4 @@ class Shrine < ApplicationRecord
   def self.shrine_search(search)
       Shrine.where(['name LIKE ?', "%#{search}%"])
   end
-  
 end
