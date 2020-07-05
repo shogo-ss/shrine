@@ -9,6 +9,11 @@
     <%= link_to "レビューを編集する", edit_review_path(review_id: review.id) %>
     <% end %>
     </li>
+    <% if current_user.admin? %>
+    <li>
+    <%= link_to "レビューを削除する", review, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+    </li>
+    <% end %>
     </ul>
     
 <%= render 'layouts/star', result: review.evaluation.to_f %>
